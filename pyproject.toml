@@ -1,0 +1,107 @@
+# pyproject.toml
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+include = [
+    "pyproject.toml",
+    "src/**/*.py",
+    "deploy/**/*.py",
+    "configs/**/*.py",
+    "scripts/**/*.py",
+]
+
+[tool.ruff.lint]
+select = ["I"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = 120
+
+[build-system]
+requires = ["setuptools>=77.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tau0_vla"
+version = "0.0.1"
+description = "Training and inference for the tau-0-vla vision-language-action model"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+# No "License :: OSI Approved :: ..." classifier: PEP 639 supersedes it with the
+# `license` expression above, and setuptools rejects a build that declares both.
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+# The packages needed to import `tau0_vla` and run the pipeline. The training
+# and serving stack (flash-attn, deepspeed, fastapi, ...) is in
+# requirements.txt, because those pin to CUDA-specific builds that cannot be
+# resolved from a plain index on every machine.
+dependencies = [
+    "torch==2.7.1",
+    "transformers>=5.5,<5.6",
+    "accelerate>=1.12",
+    "peft>=0.18",
+    "safetensors>=0.5",
+    "numpy>=2.0",
+    "scipy>=1.16",
+    "einops>=0.8",
+    "lerobot>=0.4.1,<0.5",
+    "pillow>=11",
+    "pyyaml>=6",
+    # Reached through lerobot in practice, but imported directly here, so they
+    # are declared rather than inherited: pyarrow by the norm-stats reader,
+    # torchcodec by the video decoder, torchvision by the ColorJitter transform.
+    "pyarrow>=15",
+    "torchcodec==0.5.0",
+    "torchvision==0.22.1",
+]
+
+[project.optional-dependencies]
+serve = [
+    "fastapi>=0.101",
+    "uvicorn>=0.27",
+]
+
+# deploy/openloop.py imports matplotlib lazily, only for --out-dir plotting.
+# A --no-plot run never touches it, so it is an extra rather than a dependency.
+plot = [
+    "matplotlib>=3.10",
+]
+
+dev = [
+    "ruff",
+]
+
+[project.urls]
+Homepage = "https://tau0-vla.github.io/"
+Repository = "https://github.com/sii-research/tau-0-vla"
+"Bug Tracker" = "https://github.com/sii-research/tau-0-vla/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = [
+    "assets*",
+    "benchmark*",
+    "docs",
+    "dist*",
+    "playground*",
+    "scripts*",
+    "shell*",
+    "checkpoints*",
+    "project_checkpoints*",
+    "debug_checkpoints*",
+    "mlx_configs*",
+    "wandb*",
+    "notebooks*",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+# Non-Python asset that must ship inside the wheel.
+[tool.setuptools.package-data]
+"tau0_vla.data" = ["assets/*.json"]

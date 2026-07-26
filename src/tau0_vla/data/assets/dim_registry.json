@@ -1,0 +1,1744 @@
+{
+  "discover_robotics_aitbot_mmk2_36": {
+    "source": "robocoin",
+    "robot_type": "discover_robotics_aitbot_mmk2",
+    "action_dim": 36,
+    "state_dim": 36,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "right_arm": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "left_hand": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "right_hand": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "right_arm": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "left_hand": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "right_hand": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    "gripper_type": null,
+    "sample_dataset": "AIRBOT_MMK2_beauty_sponge_and_cake_to_place"
+  },
+  "ruantong_a2d_34": {
+    "source": "robocoin",
+    "robot_type": "ruantong_a2d",
+    "action_dim": 34,
+    "state_dim": 41,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_inline_eef": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_inline_eef": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "waist": [
+        28,
+        29
+      ],
+      "head": [
+        30,
+        31
+      ],
+      "left_gripper": [
+        32
+      ],
+      "right_gripper": [
+        33
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_inline_eef": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_inline_eef": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "waist": [
+        28,
+        29
+      ],
+      "head": [
+        30,
+        31
+      ],
+      "left_gripper": [
+        32
+      ],
+      "right_gripper": [
+        33
+      ],
+      "base_imu": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "AgiBot-g1_battery_storage_b"
+  },
+  "ruantong_a2d_17": {
+    "source": "robocoin",
+    "robot_type": "ruantong_a2d",
+    "action_dim": 17,
+    "state_dim": 17,
+    "eef_dim": 12,
+    "action_groups": {
+      "other": [
+        0
+      ],
+      "left_arm": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "left_gripper": [
+        15
+      ],
+      "right_gripper": [
+        16
+      ]
+    },
+    "state_groups": {
+      "other": [
+        0
+      ],
+      "left_arm": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "left_gripper": [
+        15
+      ],
+      "right_gripper": [
+        16
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "AgiBot-g1_box_storage_tool"
+  },
+  "agilex_cobot_decoupled_magic_14": {
+    "source": "robocoin",
+    "robot_type": "agilex_cobot_decoupled_magic",
+    "action_dim": 14,
+    "state_dim": 14,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "Cobot_Magic_box_storage_chopsticks"
+  },
+  "agilex_cobot_decoupled_magic_26": {
+    "source": "robocoin",
+    "robot_type": "agilex_cobot_decoupled_magic",
+    "action_dim": 26,
+    "state_dim": 26,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "left_inline_eef": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_arm": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "right_gripper": [
+        19
+      ],
+      "right_inline_eef": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "left_inline_eef": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_arm": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "right_gripper": [
+        19
+      ],
+      "right_inline_eef": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "Cobot_Magic_clean_blackboard"
+  },
+  "unitree_g1_28": {
+    "source": "robocoin",
+    "robot_type": "unitree_g1",
+    "action_dim": 28,
+    "state_dim": 28,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "gripper_type": null,
+    "sample_dataset": "G1edu-u3_basket_storage_apple"
+  },
+  "Unitree_G1_Dex3_phecda_28": {
+    "source": "robocoin",
+    "robot_type": "Unitree_G1_Dex3_phecda",
+    "action_dim": 28,
+    "state_dim": 28,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "gripper_type": null,
+    "sample_dataset": "G1edu-u3_bowl_storage_grape_singletry"
+  },
+  "unknown_30": {
+    "source": "robocoin",
+    "robot_type": "unknown",
+    "action_dim": 30,
+    "state_dim": 30,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_hand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "right_hand": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "gripper_type": null,
+    "sample_dataset": "G1edu-u3_little_tray_storage_apple_b"
+  },
+  "yinhe_16": {
+    "source": "robocoin",
+    "robot_type": "yinhe",
+    "action_dim": 16,
+    "state_dim": 49,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "state_groups": {
+      "body": [
+        0,
+        1,
+        2
+      ],
+      "head": [
+        3,
+        4
+      ],
+      "left_arm": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "left_gripper": [
+        12
+      ],
+      "right_arm": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "right_gripper": [
+        20
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "Galbot_g1_fold_clothe_b"
+  },
+  "galaxea_r1_lite_14": {
+    "source": "robocoin",
+    "robot_type": "galaxea_r1_lite",
+    "action_dim": 14,
+    "state_dim": 14,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "R1_Lite_boil_water_in_a_kettle"
+  },
+  "galaxea_r1_lite_18": {
+    "source": "robocoin",
+    "robot_type": "galaxea_r1_lite",
+    "action_dim": 18,
+    "state_dim": 16,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_gripper": [
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_gripper": [
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "R1_Lite_build_blocks"
+  },
+  "realman_rmc_aidal_28": {
+    "source": "robocoin",
+    "robot_type": "realman_rmc_aidal",
+    "action_dim": 28,
+    "state_dim": 28,
+    "eef_dim": 12,
+    "action_groups": {
+      "right_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_gripper": [
+        7
+      ],
+      "right_inline_eef": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_arm": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "left_gripper": [
+        21
+      ],
+      "left_inline_eef": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "state_groups": {
+      "right_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_gripper": [
+        7
+      ],
+      "right_inline_eef": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "left_arm": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "left_gripper": [
+        21
+      ],
+      "left_inline_eef": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "RMC-AIDA-L_basket_storage_banana"
+  },
+  "alpha_bot_2_28": {
+    "source": "robocoin",
+    "robot_type": "alpha_bot_2",
+    "action_dim": 28,
+    "state_dim": 28,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_inline_eef": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_arm": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "right_inline_eef": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "left_gripper": [
+        26
+      ],
+      "right_gripper": [
+        27
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_inline_eef": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_arm": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "right_inline_eef": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "left_gripper": [
+        26
+      ],
+      "right_gripper": [
+        27
+      ]
+    },
+    "gripper_type": "open_m",
+    "sample_dataset": "alpha_bot_2_carry_the_clothes_basket"
+  },
+  "leju_robot_54": {
+    "source": "robocoin",
+    "robot_type": "leju_robot",
+    "action_dim": 54,
+    "state_dim": 118,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "left_leg": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "right_leg": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "left_hand": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "right_hand": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "head": [
+        38,
+        39
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "left_leg": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ],
+      "right_leg": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "left_hand": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "right_hand": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "head": [
+        38,
+        39,
+        92,
+        93,
+        94,
+        95
+      ],
+      "left_inline_eef": [
+        96,
+        97,
+        98,
+        102,
+        103,
+        104
+      ],
+      "right_inline_eef": [
+        99,
+        100,
+        101,
+        105,
+        106,
+        107
+      ],
+      "base_imu": [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117
+      ]
+    },
+    "gripper_type": null,
+    "sample_dataset": "leju_robot_box_storage_parcel"
+  },
+  "robomind_franka_1cam": {
+    "source": "robomind",
+    "robot_type": "franka_1rgb",
+    "action_dim": 8,
+    "state_dim": 8,
+    "eef_dim": 0,
+    "eef_state_dim": 6,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": true
+  },
+  "robomind_franka_3cam": {
+    "source": "robomind",
+    "robot_type": "franka_3rgb",
+    "action_dim": 8,
+    "state_dim": 8,
+    "eef_dim": 0,
+    "eef_state_dim": 6,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": true
+  },
+  "robomind_franka_fr3_dual": {
+    "source": "robomind",
+    "robot_type": "franka_fr3_dual",
+    "action_dim": 16,
+    "state_dim": 16,
+    "eef_dim": 0,
+    "eef_state_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": false
+  },
+  "robomind_tienkung_gello": {
+    "source": "robomind",
+    "robot_type": "tienkung_gello_1rgb",
+    "action_dim": 16,
+    "state_dim": 16,
+    "eef_dim": 0,
+    "eef_state_dim": 0,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "left_gripper": [
+        7
+      ],
+      "right_arm": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "right_gripper": [
+        15
+      ]
+    },
+    "gripper_type": "hand_closure",
+    "is_single_arm": false
+  },
+  "robomind_tienkung_xsens": {
+    "source": "robomind",
+    "robot_type": "tienkung_xsens_1rgb",
+    "action_dim": 14,
+    "state_dim": 14,
+    "eef_dim": 12,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "gripper_type": null,
+    "is_single_arm": false,
+    "eef_format": "euler"
+  },
+  "robomind_ur": {
+    "source": "robomind",
+    "robot_type": "ur_1rgb",
+    "action_dim": 7,
+    "state_dim": 7,
+    "eef_dim": 0,
+    "eef_state_dim": 6,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": true
+  },
+  "g1_agibot_36": {
+    "source": "agibot",
+    "robot_type": "g1_agibot",
+    "action_dim": 36,
+    "state_dim": 163,
+    "eef_dim": 14,
+    "action_groups": {
+      "left_arm": [16, 17, 18, 19, 20, 21, 22],
+      "right_arm": [23, 24, 25, 26, 27, 28, 29],
+      "left_gripper": [0],
+      "right_gripper": [1]
+    },
+    "state_groups": {
+      "left_arm": [28, 29, 30, 31, 32, 33, 34],
+      "right_arm": [35, 36, 37, 38, 39, 40, 41],
+      "left_gripper": [0],
+      "right_gripper": [1]
+    },
+    "gripper_type": "open_m",
+    "eef_format": "quat",
+    "eef_inline_indices": {
+      "state": {"pos": [14, 15, 16, 17, 18, 19], "ori": [20, 21, 22, 23, 24, 25, 26, 27]},
+      "action": {"pos": [2, 3, 4, 5, 6, 7], "ori": [8, 9, 10, 11, 12, 13, 14, 15]}
+    }
+  },
+  "g1_daas_36": {
+    "source": "agibot",
+    "robot_type": "g1_agibot",
+    "action_dim": 36,
+    "state_dim": 163,
+    "eef_dim": 14,
+    "action_groups": {
+      "left_arm": [16, 17, 18, 19, 20, 21, 22],
+      "right_arm": [23, 24, 25, 26, 27, 28, 29],
+      "left_gripper": [0],
+      "right_gripper": [1],
+      "waist": [32, 33],
+      "chassis_velocity": [34, 35]
+    },
+    "state_groups": {
+      "left_arm": [28, 29, 30, 31, 32, 33, 34],
+      "right_arm": [35, 36, 37, 38, 39, 40, 41],
+      "left_gripper": [0],
+      "right_gripper": [1],
+      "waist": [58, 59]
+    },
+    "gripper_type": "open_m",
+    "eef_format": "quat",
+    "eef_inline_indices": {
+      "state": {"pos": [14, 15, 16, 17, 18, 19], "ori": [20, 21, 22, 23, 24, 25, 26, 27]},
+      "action": {"pos": [2, 3, 4, 5, 6, 7], "ori": [8, 9, 10, 11, 12, 13, 14, 15]}
+    }
+  },
+  "robomind_agilex": {
+    "source": "robomind",
+    "robot_type": "agilex_3rgb",
+    "action_dim": 14,
+    "state_dim": 14,
+    "eef_dim": 14,
+    "action_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "state_groups": {
+      "left_arm": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "left_gripper": [
+        6
+      ],
+      "right_arm": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "right_gripper": [
+        13
+      ]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": false,
+    "eef_format": "quat"
+  },
+  "abc_yam_14": {
+    "source": "abc",
+    "robot_type": "yam_bimanual",
+    "action_dim": 14,
+    "state_dim": 14,
+    "eef_dim": 14,
+    "action_groups": {
+      "left_arm": [0, 1, 2, 3, 4, 5],
+      "left_gripper": [6],
+      "right_arm": [7, 8, 9, 10, 11, 12],
+      "right_gripper": [13]
+    },
+    "state_groups": {
+      "left_arm": [0, 1, 2, 3, 4, 5],
+      "left_gripper": [6],
+      "right_arm": [7, 8, 9, 10, 11, 12],
+      "right_gripper": [13]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": false,
+    "eef_format": "quat"
+  },
+  "hy_umi_16": {
+    "source": "hy",
+    "robot_type": "hy_umi_bimanual",
+    "action_dim": 16,
+    "state_dim": 16,
+    "eef_dim": 14,
+    "action_groups": {
+      "left_gripper": [7],
+      "right_gripper": [15]
+    },
+    "state_groups": {
+      "left_gripper": [7],
+      "right_gripper": [15]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": false,
+    "eef_format": "quat"
+  },
+  "a2d_41_joint": {
+    "source": "agibot",
+    "robot_type": "a2d",
+    "action_dim": 41,
+    "state_dim": 93,
+    "eef_dim": 0,
+    "action_groups": {
+      "left_arm": [0, 1, 2, 3, 4, 5, 6],
+      "right_arm": [7, 8, 9, 10, 11, 12, 13],
+      "left_gripper": [14],
+      "right_gripper": [15]
+    },
+    "state_groups": {
+      "left_arm": [0, 1, 2, 3, 4, 5, 6],
+      "right_arm": [7, 8, 9, 10, 11, 12, 13],
+      "left_gripper": [14],
+      "right_gripper": [15]
+    },
+    "gripper_type": "open_m",
+    "is_single_arm": false
+  }
+}

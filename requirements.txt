@@ -1,0 +1,43 @@
+# Runtime dependencies for tau-0-vla.
+#
+# These are the versions this release was verified on: a single 8xH200 node
+# running the shipped example end to end — finetune from the released
+# checkpoint, open-loop evaluation, and HTTP serving.
+#
+# `pip install -e .` installs the package itself; this file pins the training
+# and serving stack around it.
+
+# --- core model stack ---
+torch==2.7.1                   # the verified build is +cu128, from the PyTorch CUDA index
+transformers==5.5.4
+accelerate==1.13.0
+peft==0.18.0
+safetensors==0.5.2
+
+# --- numerics ---
+numpy==2.3.5
+scipy==1.16.3                  # rotation conversions in unified EEF transforms
+einops==0.8.1
+
+# --- data ---
+lerobot==0.4.1                 # LeRobot v3.0 dataset reader
+pillow==11.1.0                 # ResizeWithPad / ColorJitter image transforms
+pyyaml==6.0.2
+pyarrow==20.0.0                # parquet column reads in scripts/norm_stats/
+torchcodec==0.5.0              # compatible with torch 2.7; install the +cu128 wheel
+torchvision==0.22.1            # compatible with torch 2.7.1
+
+# --- training ---
+deepspeed==0.18.3              # the ZeRO stages scripts/deepspeed/*.json configure
+flash-linear-attention==0.5.0  # gated-delta-rule kernels the Qwen3.5 backbone imports
+
+# --- serving (deploy/) ---
+fastapi==0.101.0
+uvicorn==0.27.1
+
+# --- open-loop plots (deploy/openloop.py --out-dir) ---
+matplotlib==3.10.8             # imported lazily; --no-plot runs never need it
+
+# `flash-attn` is installed separately by scripts/setup.sh with
+# --no-build-isolation after torch is present. Keep it out of this file: pip's
+# default isolated build cannot see the already-installed CUDA torch package.

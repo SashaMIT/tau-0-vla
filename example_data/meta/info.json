@@ -1,0 +1,1374 @@
+{
+    "codebase_version": "v3.0",
+    "robot_type": "A2D",
+    "total_episodes": 25,
+    "total_frames": 9469,
+    "total_tasks": 2,
+    "chunks_size": 1000,
+    "data_files_size_in_mb": 100,
+    "video_files_size_in_mb": 500,
+    "fps": 30,
+    "splits": {
+        "train": "0:25"
+    },
+    "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+    "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+    "features": {
+        "observation.images.top_head": {
+            "dtype": "video",
+            "shape": [
+                480,
+                640,
+                3
+            ],
+            "names": [
+                "height",
+                "width",
+                "channels"
+            ],
+            "info": {
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "h264",
+                "video.pix_fmt": "yuv420p",
+                "video.is_depth_map": false,
+                "video.fps": 30,
+                "video.channels": 3,
+                "has_audio": false
+            }
+        },
+        "observation.images.hand_left": {
+            "dtype": "video",
+            "shape": [
+                480,
+                640,
+                3
+            ],
+            "names": [
+                "height",
+                "width",
+                "channels"
+            ],
+            "info": {
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "h264",
+                "video.pix_fmt": "yuv420p",
+                "video.is_depth_map": false,
+                "video.fps": 30,
+                "video.channels": 3,
+                "has_audio": false
+            }
+        },
+        "observation.images.hand_right": {
+            "dtype": "video",
+            "shape": [
+                480,
+                640,
+                3
+            ],
+            "names": [
+                "height",
+                "width",
+                "channels"
+            ],
+            "info": {
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "h264",
+                "video.pix_fmt": "yuv420p",
+                "video.is_depth_map": false,
+                "video.fps": 30,
+                "video.channels": 3,
+                "has_audio": false
+            }
+        },
+        "observation.state": {
+            "dtype": "float32",
+            "shape": [
+                163
+            ],
+            "names": [
+                "state/left_effector/position[0]",
+                "state/right_effector/position[0]",
+                "state/end/wrench[0]",
+                "state/end/wrench[1]",
+                "state/end/wrench[2]",
+                "state/end/wrench[3]",
+                "state/end/wrench[4]",
+                "state/end/wrench[5]",
+                "state/end/wrench[6]",
+                "state/end/wrench[7]",
+                "state/end/wrench[8]",
+                "state/end/wrench[9]",
+                "state/end/wrench[10]",
+                "state/end/wrench[11]",
+                "state/end/position[0]",
+                "state/end/position[1]",
+                "state/end/position[2]",
+                "state/end/position[3]",
+                "state/end/position[4]",
+                "state/end/position[5]",
+                "state/end/orientation[0]",
+                "state/end/orientation[1]",
+                "state/end/orientation[2]",
+                "state/end/orientation[3]",
+                "state/end/orientation[4]",
+                "state/end/orientation[5]",
+                "state/end/orientation[6]",
+                "state/end/orientation[7]",
+                "state/joint/position[0]",
+                "state/joint/position[1]",
+                "state/joint/position[2]",
+                "state/joint/position[3]",
+                "state/joint/position[4]",
+                "state/joint/position[5]",
+                "state/joint/position[6]",
+                "state/joint/position[7]",
+                "state/joint/position[8]",
+                "state/joint/position[9]",
+                "state/joint/position[10]",
+                "state/joint/position[11]",
+                "state/joint/position[12]",
+                "state/joint/position[13]",
+                "state/joint/current_value[0]",
+                "state/joint/current_value[1]",
+                "state/joint/current_value[2]",
+                "state/joint/current_value[3]",
+                "state/joint/current_value[4]",
+                "state/joint/current_value[5]",
+                "state/joint/current_value[6]",
+                "state/joint/current_value[7]",
+                "state/joint/current_value[8]",
+                "state/joint/current_value[9]",
+                "state/joint/current_value[10]",
+                "state/joint/current_value[11]",
+                "state/joint/current_value[12]",
+                "state/joint/current_value[13]",
+                "state/head/position[0]",
+                "state/head/position[1]",
+                "state/waist/position[0]",
+                "state/waist/position[1]",
+                "state/robot/position[0]",
+                "state/robot/position[1]",
+                "state/robot/position[2]",
+                "state/robot/orientation[0]",
+                "state/robot/orientation[1]",
+                "state/robot/orientation[2]",
+                "state/robot/orientation[3]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[0]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[1]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[2]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[3]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[4]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[5]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[6]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[7]",
+                "hand_left_extrinsic_params_aligned/rotation_matrix[8]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[0]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[1]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[2]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[3]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[4]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[5]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[6]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[7]",
+                "hand_right_extrinsic_params_aligned/rotation_matrix[8]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[0]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[1]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[2]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[3]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[4]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[5]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[6]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[7]",
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix[8]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[0]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[1]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[2]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[3]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[4]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[5]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[6]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[7]",
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix[8]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[0]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[1]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[2]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[3]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[4]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[5]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[6]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[7]",
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix[8]",
+                "head_extrinsic_params_aligned/rotation_matrix[0]",
+                "head_extrinsic_params_aligned/rotation_matrix[1]",
+                "head_extrinsic_params_aligned/rotation_matrix[2]",
+                "head_extrinsic_params_aligned/rotation_matrix[3]",
+                "head_extrinsic_params_aligned/rotation_matrix[4]",
+                "head_extrinsic_params_aligned/rotation_matrix[5]",
+                "head_extrinsic_params_aligned/rotation_matrix[6]",
+                "head_extrinsic_params_aligned/rotation_matrix[7]",
+                "head_extrinsic_params_aligned/rotation_matrix[8]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[0]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[1]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[2]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[3]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[4]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[5]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[6]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[7]",
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix[8]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[0]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[1]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[2]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[3]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[4]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[5]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[6]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[7]",
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix[8]",
+                "hand_left_extrinsic_params_aligned/translation_vector[0]",
+                "hand_left_extrinsic_params_aligned/translation_vector[1]",
+                "hand_left_extrinsic_params_aligned/translation_vector[2]",
+                "hand_right_extrinsic_params_aligned/translation_vector[0]",
+                "hand_right_extrinsic_params_aligned/translation_vector[1]",
+                "hand_right_extrinsic_params_aligned/translation_vector[2]",
+                "head_left_fisheye_extrinsic_params_aligned/translation_vector[0]",
+                "head_left_fisheye_extrinsic_params_aligned/translation_vector[1]",
+                "head_left_fisheye_extrinsic_params_aligned/translation_vector[2]",
+                "head_right_fisheye_extrinsic_params_aligned/translation_vector[0]",
+                "head_right_fisheye_extrinsic_params_aligned/translation_vector[1]",
+                "head_right_fisheye_extrinsic_params_aligned/translation_vector[2]",
+                "head_center_fisheye_extrinsic_params_aligned/translation_vector[0]",
+                "head_center_fisheye_extrinsic_params_aligned/translation_vector[1]",
+                "head_center_fisheye_extrinsic_params_aligned/translation_vector[2]",
+                "head_extrinsic_params_aligned/translation_vector[0]",
+                "head_extrinsic_params_aligned/translation_vector[1]",
+                "head_extrinsic_params_aligned/translation_vector[2]",
+                "back_left_fisheye_extrinsic_params_aligned/translation_vector[0]",
+                "back_left_fisheye_extrinsic_params_aligned/translation_vector[1]",
+                "back_left_fisheye_extrinsic_params_aligned/translation_vector[2]",
+                "back_right_fisheye_extrinsic_params_aligned/translation_vector[0]",
+                "back_right_fisheye_extrinsic_params_aligned/translation_vector[1]",
+                "back_right_fisheye_extrinsic_params_aligned/translation_vector[2]"
+            ],
+            "field_descriptions": {
+                "state/left_effector/position": {
+                    "description": "",
+                    "dimensions": 1,
+                    "indices": [
+                        0
+                    ]
+                },
+                "state/right_effector/position": {
+                    "description": "",
+                    "dimensions": 1,
+                    "indices": [
+                        1
+                    ]
+                },
+                "state/end/wrench": {
+                    "description": "",
+                    "dimensions": 12,
+                    "indices": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ]
+                },
+                "state/end/position": {
+                    "description": "",
+                    "dimensions": 6,
+                    "indices": [
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19
+                    ]
+                },
+                "state/end/velocity": {
+                    "description": "",
+                    "dimensions": 0,
+                    "indices": []
+                },
+                "state/end/orientation": {
+                    "description": "",
+                    "dimensions": 8,
+                    "indices": [
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27
+                    ]
+                },
+                "state/end/arm_orientation": {
+                    "description": "",
+                    "dimensions": 0,
+                    "indices": []
+                },
+                "state/end/arm_position": {
+                    "description": "",
+                    "dimensions": 0,
+                    "indices": []
+                },
+                "state/joint/position": {
+                    "description": "",
+                    "dimensions": 14,
+                    "indices": [
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41
+                    ]
+                },
+                "state/joint/current_value": {
+                    "description": "",
+                    "dimensions": 14,
+                    "indices": [
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55
+                    ]
+                },
+                "state/head/position": {
+                    "description": "",
+                    "dimensions": 2,
+                    "indices": [
+                        56,
+                        57
+                    ]
+                },
+                "state/waist/position": {
+                    "description": "",
+                    "dimensions": 2,
+                    "indices": [
+                        58,
+                        59
+                    ]
+                },
+                "state/robot/position": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        60,
+                        61,
+                        62
+                    ]
+                },
+                "state/robot/orientation": {
+                    "description": "",
+                    "dimensions": 4,
+                    "indices": [
+                        63,
+                        64,
+                        65,
+                        66
+                    ]
+                },
+                "state/operator_event/action_src_status": {
+                    "description": "",
+                    "dimensions": 0,
+                    "indices": []
+                },
+                "hand_left_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75
+                    ]
+                },
+                "hand_right_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84
+                    ]
+                },
+                "head_left_fisheye_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93
+                    ]
+                },
+                "head_right_fisheye_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102
+                    ]
+                },
+                "head_center_fisheye_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111
+                    ]
+                },
+                "head_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120
+                    ]
+                },
+                "back_left_fisheye_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129
+                    ]
+                },
+                "back_right_fisheye_extrinsic_params_aligned/rotation_matrix": {
+                    "description": "",
+                    "dimensions": 9,
+                    "indices": [
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138
+                    ]
+                },
+                "hand_left_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        139,
+                        140,
+                        141
+                    ]
+                },
+                "hand_right_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        142,
+                        143,
+                        144
+                    ]
+                },
+                "head_left_fisheye_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        145,
+                        146,
+                        147
+                    ]
+                },
+                "head_right_fisheye_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        148,
+                        149,
+                        150
+                    ]
+                },
+                "head_center_fisheye_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        151,
+                        152,
+                        153
+                    ]
+                },
+                "head_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        154,
+                        155,
+                        156
+                    ]
+                },
+                "back_left_fisheye_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        157,
+                        158,
+                        159
+                    ]
+                },
+                "back_right_fisheye_extrinsic_params_aligned/translation_vector": {
+                    "description": "",
+                    "dimensions": 3,
+                    "indices": [
+                        160,
+                        161,
+                        162
+                    ]
+                }
+            }
+        },
+        "action": {
+            "dtype": "float32",
+            "shape": [
+                36
+            ],
+            "names": [
+                "action/left_effector/position[0]",
+                "action/right_effector/position[0]",
+                "action/end/position[0]",
+                "action/end/position[1]",
+                "action/end/position[2]",
+                "action/end/position[3]",
+                "action/end/position[4]",
+                "action/end/position[5]",
+                "action/end/orientation[0]",
+                "action/end/orientation[1]",
+                "action/end/orientation[2]",
+                "action/end/orientation[3]",
+                "action/end/orientation[4]",
+                "action/end/orientation[5]",
+                "action/end/orientation[6]",
+                "action/end/orientation[7]",
+                "action/joint/position[0]",
+                "action/joint/position[1]",
+                "action/joint/position[2]",
+                "action/joint/position[3]",
+                "action/joint/position[4]",
+                "action/joint/position[5]",
+                "action/joint/position[6]",
+                "action/joint/position[7]",
+                "action/joint/position[8]",
+                "action/joint/position[9]",
+                "action/joint/position[10]",
+                "action/joint/position[11]",
+                "action/joint/position[12]",
+                "action/joint/position[13]",
+                "action/head/position[0]",
+                "action/head/position[1]",
+                "action/waist/position[0]",
+                "action/waist/position[1]",
+                "action/robot/velocity[0]",
+                "action/robot/velocity[1]"
+            ],
+            "field_descriptions": {
+                "action/left_effector/position": {
+                    "description": "",
+                    "dimensions": 1,
+                    "indices": [
+                        0
+                    ]
+                },
+                "action/right_effector/position": {
+                    "description": "",
+                    "dimensions": 1,
+                    "indices": [
+                        1
+                    ]
+                },
+                "action/end/position": {
+                    "description": "",
+                    "dimensions": 6,
+                    "indices": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7
+                    ]
+                },
+                "action/end/orientation": {
+                    "description": "",
+                    "dimensions": 8,
+                    "indices": [
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                "action/joint/position": {
+                    "description": "",
+                    "dimensions": 14,
+                    "indices": [
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29
+                    ]
+                },
+                "action/head/position": {
+                    "description": "",
+                    "dimensions": 2,
+                    "indices": [
+                        30,
+                        31
+                    ]
+                },
+                "action/waist/position": {
+                    "description": "",
+                    "dimensions": 2,
+                    "indices": [
+                        32,
+                        33
+                    ]
+                },
+                "action/robot/velocity": {
+                    "description": "",
+                    "dimensions": 2,
+                    "indices": [
+                        34,
+                        35
+                    ]
+                }
+            }
+        },
+        "timestamp": {
+            "dtype": "float32",
+            "shape": [
+                1
+            ],
+            "names": null
+        },
+        "frame_index": {
+            "dtype": "int64",
+            "shape": [
+                1
+            ],
+            "names": null
+        },
+        "episode_index": {
+            "dtype": "int64",
+            "shape": [
+                1
+            ],
+            "names": null
+        },
+        "index": {
+            "dtype": "int64",
+            "shape": [
+                1
+            ],
+            "names": null
+        },
+        "task_index": {
+            "dtype": "int64",
+            "shape": [
+                1
+            ],
+            "names": null
+        }
+    },
+    "instruction_segments": {
+        "0": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 142,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 142,
+                "end_frame_index": 184,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 184,
+                "end_frame_index": 240,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "1": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 37,
+                "end_frame_index": 144,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 144,
+                "end_frame_index": 193,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 193,
+                "end_frame_index": 253,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "2": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 34,
+                "end_frame_index": 131,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 131,
+                "end_frame_index": 176,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 176,
+                "end_frame_index": 227,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "3": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 134,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 134,
+                "end_frame_index": 190,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 190,
+                "end_frame_index": 240,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "4": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 35,
+                "end_frame_index": 174,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 174,
+                "end_frame_index": 226,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 226,
+                "end_frame_index": 277,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "5": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 57,
+                "end_frame_index": 187,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 187,
+                "end_frame_index": 241,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 241,
+                "end_frame_index": 294,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "6": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 100,
+                "end_frame_index": 157,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 157,
+                "end_frame_index": 205,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 205,
+                "end_frame_index": 258,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "7": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 142,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 142,
+                "end_frame_index": 194,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 194,
+                "end_frame_index": 248,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "8": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 139,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 139,
+                "end_frame_index": 190,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 190,
+                "end_frame_index": 248,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "9": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 170,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 170,
+                "end_frame_index": 230,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 230,
+                "end_frame_index": 300,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "10": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 38,
+                "end_frame_index": 192,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 192,
+                "end_frame_index": 258,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 258,
+                "end_frame_index": 342,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "11": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 216,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 216,
+                "end_frame_index": 286,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 286,
+                "end_frame_index": 351,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "12": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 28,
+                "end_frame_index": 193,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 193,
+                "end_frame_index": 260,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 260,
+                "end_frame_index": 345,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "13": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 196,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 196,
+                "end_frame_index": 270,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 270,
+                "end_frame_index": 350,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "14": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 33,
+                "end_frame_index": 187,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 187,
+                "end_frame_index": 263,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 263,
+                "end_frame_index": 345,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "15": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 34,
+                "end_frame_index": 188,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 188,
+                "end_frame_index": 259,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 259,
+                "end_frame_index": 329,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "16": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 33,
+                "end_frame_index": 217,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 217,
+                "end_frame_index": 308,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 308,
+                "end_frame_index": 388,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "17": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 88,
+                "end_frame_index": 144,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 144,
+                "end_frame_index": 192,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 192,
+                "end_frame_index": 250,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "18": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 80,
+                "end_frame_index": 140,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 140,
+                "end_frame_index": 189,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 189,
+                "end_frame_index": 248,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "19": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 84,
+                "end_frame_index": 137,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 137,
+                "end_frame_index": 190,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 190,
+                "end_frame_index": 259,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "20": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 81,
+                "end_frame_index": 135,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 135,
+                "end_frame_index": 195,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 195,
+                "end_frame_index": 257,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "21": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 137,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 137,
+                "end_frame_index": 191,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 191,
+                "end_frame_index": 254,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "22": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 131,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 131,
+                "end_frame_index": 184,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 184,
+                "end_frame_index": 244,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "23": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 94,
+                "end_frame_index": 148,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 148,
+                "end_frame_index": 200,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 200,
+                "end_frame_index": 257,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ],
+        "24": [
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 0,
+                "end_frame_index": 148,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 148,
+                "end_frame_index": 202,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            },
+            {
+                "track": "Beat",
+                "instruction": "Strike the gong held by the left arm with the mallet held by the right arm.",
+                "start_frame_index": 202,
+                "end_frame_index": 261,
+                "origin_instruction": "Strike the gong held by the left arm with the mallet held by the right arm."
+            }
+        ]
+    },
+    "high_level_instruction": {
+        "0": "Strike the gong",
+        "1": "Strike the gong",
+        "2": "Strike the gong",
+        "3": "Strike the gong",
+        "4": "Strike the gong",
+        "5": "Strike the gong",
+        "6": "Strike the gong",
+        "7": "Strike the gong",
+        "8": "Strike the gong",
+        "9": "Strike the gong",
+        "10": "Strike the gong",
+        "11": "Strike the gong",
+        "12": "Strike the gong",
+        "13": "Strike the gong",
+        "14": "Strike the gong",
+        "15": "Strike the gong",
+        "16": "Strike the gong",
+        "17": "Strike the gong",
+        "18": "Strike the gong",
+        "19": "Strike the gong",
+        "20": "Strike the gong",
+        "21": "Strike the gong",
+        "22": "Strike the gong",
+        "23": "Strike the gong",
+        "24": "Strike the gong"
+    }
+}

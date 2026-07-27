@@ -21,9 +21,9 @@ they are the four marked "Change this" below:
 
 Everything else is machinery that works the same for any embodiment. The one
 piece to read carefully before touching anything is
-:func:`build_sdk_action_perm` — see its docstring. Its two ``raise`` branches are
+:func:`build_sdk_action_perm` — see its docstring. Its validation failures are
 the only thing standing between a mis-specified registry and a wrong-order
-action vector on real hardware; do not soften either into a warning.
+action vector on real hardware; do not soften them into warnings.
 """
 from __future__ import annotations
 
@@ -120,7 +120,23 @@ def build_sdk_action_perm(data_spec, slices) -> list[int] | None:
     groups = get_registry_entry(key).get("action_groups", {})
     if not groups:
         return None
-    width = 1 + max(i for ix in groups.values() for i in ix)
+    native_indices = [index for indices in groups.values() for index in indices]
+    if not native_indices:
+        raise ValueError(
+            f"/act_lerobot_bytes: registry {key!r} has action_groups but no "
+            "native action indices."
+        )
+    invalid = [
+        index
+        for index in native_indices
+        if isinstance(index, bool) or not isinstance(index, int) or index < 0
+    ]
+    if invalid:
+        raise ValueError(
+            f"/act_lerobot_bytes: registry {key!r} has invalid native action "
+            f"indices {invalid}; indices must be non-negative integers."
+        )
+    width = 1 + max(native_indices)
     perm: list[int | None] = [None] * width
     for name, off, dim in slices:
         ix = groups.get(name)
@@ -130,8 +146,21 @@ def build_sdk_action_perm(data_spec, slices) -> list[int] | None:
                 f"entry in registry {key!r}; cannot map it to the SDK's native "
                 f"action layout (EEF slots aren't supported on a joint SDK endpoint)."
             )
+        if len(ix) != dim:
+            raise ValueError(
+                f"/act_lerobot_bytes: restored slot {name!r} has width {dim}, "
+                f"but registry {key!r} maps {len(ix)} native indices; cannot "
+                "construct a one-to-one SDK action permutation."
+            )
         for j in range(dim):
-            perm[ix[j]] = off + j
+            native_idx = ix[j]
+            if perm[native_idx] is not None:
+                raise ValueError(
+                    f"/act_lerobot_bytes: registry {key!r} maps multiple restored "
+                    f"values to native action index {native_idx}; cannot construct "
+                    "a one-to-one SDK action permutation."
+                )
+            perm[native_idx] = off + j
     holes = [i for i, p in enumerate(perm) if p is None]
     if holes:
         raise ValueError(

@@ -53,14 +53,22 @@ def build_app(policy: Tau0VLAPolicy, *, adapter: str | None = None) -> FastAPI:
     action_slices = _action_slices(policy.data_spec)
     logger.info("action slices: %s", action_slices)
 
-    # /act_lerobot_bytes returns a bare positional chunk the A2D SDK applies
-    # index-for-index. Unified-40D routes emit grippers-first; the SDK expects
-    # arms-first (registry action_groups) — remap. None for component routes
-    # (already native order).
-    sdk_action_perm = deploy_io.build_sdk_action_perm(policy.data_spec, action_slices)
-    if sdk_action_perm is not None:
-        logger.info("/act_lerobot_bytes SDK-native remap (unified→action_groups): %s",
-                    sdk_action_perm)
+    # Only the flat SDK endpoint needs a positional permutation. Resolve it on
+    # first use so a route with sparse/pass-through native action columns can
+    # still serve canonical /act; the flat endpoint will fail loudly until its
+    # adapter defines an explicit fill/preserve policy.
+    sdk_action_perm_resolved = False
+    sdk_action_perm = None
+
+    def resolve_sdk_action_perm():
+        nonlocal sdk_action_perm_resolved, sdk_action_perm
+        if not sdk_action_perm_resolved:
+            sdk_action_perm = deploy_io.build_sdk_action_perm(policy.data_spec, action_slices)
+            sdk_action_perm_resolved = True
+            if sdk_action_perm is not None:
+                logger.info("/act_lerobot_bytes SDK-native remap (unified→action_groups): %s",
+                            sdk_action_perm)
+        return sdk_action_perm
 
     app = FastAPI()
 
@@ -69,7 +77,7 @@ def build_app(policy: Tau0VLAPolicy, *, adapter: str | None = None) -> FastAPI:
         actions = policy.infer(adapt(pickle.loads(await request.body())))["actions"]
         # Unified routes: reorder columns into the SDK's native action layout
         # (arms-then-grippers) before serialising. Component routes: identity.
-        arr = deploy_io.apply_sdk_action_perm(actions, sdk_action_perm)
+        arr = deploy_io.apply_sdk_action_perm(actions, resolve_sdk_action_perm())
         return arr.tolist()
 
     @app.post("/act")
@@ -102,7 +110,7 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--model", required=True)
     p.add_argument("--route", default=None)
-    p.add_argument("--host", default="0.0.0.0")
+    p.add_argument("--host", default="127.0.0.1")
     p.add_argument("--port", type=int, default=10088)
     p.add_argument("--device", default=None)
     p.add_argument("--adapter", default=None,

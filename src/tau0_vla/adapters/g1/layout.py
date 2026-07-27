@@ -108,7 +108,8 @@ class G1RobotConfig(RobotConfig):
         if is_eef:
             raise NotImplementedError(
                 "The public G1 adapter has no URDF-backed joint-to-EEF conversion. "
-                "Use a checkpoint trained from native EEF fields or a joint-control checkpoint."
+                "Public v1 serving supports joint-control checkpoints only; native "
+                "EEF fields remain available for training and data workflows."
             )
         state = cls.observation_from_payload(payload).joint_state
         if state_key not in norm_stats:

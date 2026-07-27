@@ -1,7 +1,8 @@
 # Deployment
 
 The `deploy` package loads post-trained τ₀-VLA checkpoints for local inference,
-HTTP serving, and open-loop evaluation.
+HTTP serving, and open-loop evaluation. Public v1 HTTP serving supports
+joint-control checkpoints only.
 
 | entry point | purpose |
 |---|---|
@@ -95,10 +96,10 @@ once.
 Every camera name and left/right view must match training. Missing images fail
 loudly; also check that the instruction is non-empty.
 
-The public G1 adapter cannot turn joint state into EEF state. Separate parquet
-EEF columns are training-only in the generic path: deployment needs an
-`_eef_provider()` that extracts EEF from the flat SDK state, or an explicit
-extension to `encode_payload`. An extra top-level EEF key is otherwise ignored.
+EEF columns and providers remain training/data-pipeline features. The public v1
+server rejects routes with EEF action slices and does not accept or return an
+EEF control contract. The public G1 adapter also never derives EEF state from
+joints.
 
 ## Action restoration and SDK order
 
@@ -109,6 +110,9 @@ The compact flat order is:
 left_eef, right_eef, left_gripper, right_gripper,
 waist, chassis_velocity, left_arm, right_arm
 ```
+
+This is the data-level restoration order. Public v1 serving uses only its
+joint-control branches; EEF slices are not a public server output.
 
 Only active slices are included. For `g1_a2d_joint_unified` this becomes:
 
@@ -135,8 +139,16 @@ adapter. Returning `None` is valid only when restored component order already
 equals SDK order.
 
 The bundled `g1_agibot_36` and `g1_daas_36` registry layouts contain native
-action gaps, so their flat SDK endpoint needs such a fill/preserve policy.
-Canonical `/act` does not need this positional permutation.
+action gaps. For example, `g1_agibot_36` controls native columns `0`, `1`, and
+`16:30`, while a 36D SDK vector also contains columns `2:16` and `30:36`. The
+policy does not define values for those gaps, so a permutation cannot construct
+the complete 36D command safely.
+
+In public v1:
+
+- use canonical `/act` for `g1_agibot_36` and `g1_daas_36`;
+- use `/act_lerobot_bytes` only for a layout with a complete, contiguous action
+  mapping, such as `g1_a2d_joint_unified`.
 
 Before hardware use, log and inspect semantic slices, permutation, final width,
 and a known action vector. Compare one identical observation through the

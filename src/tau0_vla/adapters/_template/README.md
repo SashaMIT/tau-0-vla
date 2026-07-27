@@ -144,9 +144,9 @@ concatenates left then right: 14D quaternion or 12D Euler. The EEF action column
 automatically receives the same horizon offsets as the raw action column; EEF
 state remains the current frame.
 
-Separate EEF parquet columns work for training but are not accepted by the
-default deployment encoder. If EEF is embedded in the flat vectors, override
-`_eef_provider()`:
+Separate EEF parquet columns work for training. If EEF is embedded in the flat
+vectors, an `_eef_provider()` can expose it to the unified data assembler and
+local evaluation:
 
 ```python
 def _eef_provider(self):
@@ -159,16 +159,15 @@ def _eef_provider(self):
     return provide
 ```
 
-This provider runs in training and deployment. For truly separate live EEF
-input, extend the payload and state-encoder API; adding a top-level payload key
-alone has no effect. `eef_inline_indices` in the registry is descriptive
-metadata and is not read automatically.
+This does not create a public serving contract. Public v1 serving routes must
+remain joint-controlled, and the server rejects EEF action slices. Adding a
+top-level EEF payload key alone has no effect. `eef_inline_indices` in the
+registry is descriptive metadata and is not read automatically.
 
 `_eef_present_col` is an optional per-sample validity flag. Without it, finite
 EEF values determine presence. `_is_single_arm` is currently metadata only:
 the generic assembler still reserves the dual-arm EEF block, so a single-arm
-EEF route needs explicit mask/restoration logic. Generic deploy restoration
-also does not support mixed per-request EEF/joint fallback as-is.
+EEF route needs explicit mask/restoration logic in the data pipeline.
 
 ## 3. Define deployment I/O
 
@@ -198,8 +197,8 @@ unified route it is usually false: copy and adapt the checked implementation in
 [`g1/deploy_io.py`](../g1/deploy_io.py). Missing slots and holes must fail
 before an action reaches hardware.
 
-If the SDK expects Euler or `quat_wxyz`, convert the restored `quat_xyzw`
-output explicitly; a column permutation cannot change orientation format.
+The public v1 template does not define an EEF SDK output. Keep new serving
+routes joint-controlled.
 
 ## 4. Export and register
 
@@ -230,17 +229,20 @@ Keep the three identifiers distinct:
 
 ## 5. Validate the contract
 
-Before training or deployment, inspect a real sample and check:
+Before training, inspect a real sample and check:
 
 - instruction text and all camera views;
 - native state/action widths and each registry index;
 - every active action arm/EEF dimension has a same-unit, same-order current
   state reference;
 - unified values, `state_mask`, and `action_mask`;
-- EEF-present versus joint-fallback behavior, if applicable;
+- EEF-present versus joint-fallback behavior for EEF training data;
 - arm/EEF relative actions and gripper/waist/chassis absolute actions;
-- normalization followed by `restore_action`;
-- `/act` semantic keys and flat SDK action permutation.
+- normalization followed by `restore_action`.
+
+For a public v1 joint-control serving route, also verify `/act` semantic keys,
+the flat SDK action permutation when that endpoint is applicable, and exact
+dataset/SDK state parity.
 
 The registry entry, adapter class, config name, normalization statistics, and
 deployment order together form one checkpoint contract.

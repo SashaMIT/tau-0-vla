@@ -45,9 +45,10 @@ For a unified route:
 - let the unified assembler apply the registry mapping, masks, relative
   arm/EEF actions, and per-embodiment 40D statistics.
 
-Do not add EEF modalities to a joint-only dataset. Native EEF routes must be
-wired by the adapter as described in the
-[adapter guide](../../src/tau0_vla/adapters/README.md).
+Do not add EEF modalities to a joint-only dataset. Native EEF training data
+must be wired by the adapter as described in the
+[adapter guide](../../src/tau0_vla/adapters/README.md). Public v1 serving routes
+must use joint control; EEF serving is not supported.
 
 ## Configure the task
 
@@ -113,4 +114,5 @@ bash scripts/train.sh configs/my_task/train.yaml
 
 Before a full run, inspect one loader batch for instruction, camera views,
 state/action values, active mask indices, and shapes. After saving, reload its
-Data Spec and verify `restore_action` plus the deployment adapter's SDK order.
+Data Spec and verify `restore_action`. For a joint-control serving route, also
+verify the deployment adapter's SDK order.

@@ -35,7 +35,23 @@ def _split_action_chunk(action: np.ndarray, slices) -> dict:
     return {name: arr[..., o: o + d].tolist() for name, o, d in slices}
 
 
+def _require_public_v1_joint_only(data_spec) -> None:
+    """Fail before serving an EEF action route; local EEF evaluation stays valid."""
+    if data_spec.unified_registry_key is not None:
+        uses_eef = bool(data_spec.unified_has_eef)
+    else:
+        uses_eef = bool(data_spec.is_eef)
+    if uses_eef:
+        raise NotImplementedError(
+            "Public v1 serving supports joint-control checkpoints only; "
+            f"route {data_spec.finch_config_name!r} uses EEF actions. "
+            "EEF data and training remain supported, but EEF HTTP serving "
+            "is not available in this release."
+        )
+
+
 def build_app(policy: Tau0VLAPolicy, *, adapter: str | None = None) -> FastAPI:
+    _require_public_v1_joint_only(policy.data_spec)
     # Embodiment-specific wire knowledge (SDK payload keys, camera aliases,
     # state channel map, SDK action column order) lives in layer 3 of an
     # adapter, ``adapters/<robot>/deploy_io.py``. Which adapter is a property of
@@ -84,9 +100,9 @@ def build_app(policy: Tau0VLAPolicy, *, adapter: str | None = None) -> FastAPI:
     async def act_canonical(request: Request):
         """Direct canonical-payload inference: body is pickle of the exact
         ``{prompt, images, state, meta}`` ``policy.infer`` expects. Response
-        is a dict keyed by canonical component name
-        (``arm_joint`` / ``eef_pose`` / ``gripper`` / ``waist`` / ...), each
-        value a nested list shape ``[chunk, native_dim]``."""
+        is a dict keyed by canonical joint-control component name
+        (``arm_joint`` / ``gripper`` / ``waist`` / ...), each value a nested
+        list shape ``[chunk, native_dim]``."""
         payload = pickle.loads(await request.body())
         # A mismatch between the caller's prompt and the templated one is the
         # first thing to check when a policy behaves differently over HTTP than
@@ -135,6 +151,7 @@ def main() -> None:
     discover_checkpoint_config_modules(args.model)
 
     policy = Tau0VLAPolicy.from_checkpoint(args.model, route=args.route, device=args.device)
+    _require_public_v1_joint_only(policy.data_spec)
     logger.info("route=%s", policy.data_spec.finch_config_name)
 
     _configure_inference_mode(policy, args.infer_mode, args.max_prefix_len)

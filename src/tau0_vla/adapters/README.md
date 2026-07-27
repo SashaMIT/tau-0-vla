@@ -92,16 +92,12 @@ This prevents the same arm motion from being represented in both EEF and joint
 space. The public G1 routes are joint-controlled: they do not ship a URDF and
 never derive EEF poses from joints.
 
-Native EEF support has two distinct paths:
-
-- training may read separate `_eef_state_col` / `_eef_action_col` parquet
-  features;
-- generic deployment can currently restore EEF only when an adapter
-  `_eef_provider()` extracts it from the flat SDK state/action vectors.
-
-The deploy encoder does not consume an extra top-level EEF payload key.
-Column-only EEF deployment therefore requires an encoder/payload extension;
-without one it fails with `NotImplementedError`.
+Training may read native EEF values from separate `_eef_state_col` /
+`_eef_action_col` parquet features or from an adapter `_eef_provider()`. These
+are data-assembly features, not a public v1 serving contract. The public server
+supports joint-control routes only and rejects routes with EEF action slices.
+Registry `eef_inline_indices` metadata and an extra top-level EEF payload key do
+not enable EEF serving.
 
 `state_mask` and `action_mask` are independent float32 40-vectors. Inactive
 values are zeroed again after normalization. Training loss and inference
@@ -124,7 +120,7 @@ native values -> scatter to 40D -> make arm/EEF actions relative
               -> normalize -> zero inactive slots
 ```
 
-Deployment performs the exact inverse:
+Data-level restoration performs the exact inverse:
 
 ```text
 model output -> unnormalize -> restore absolute arm/EEF action
@@ -133,6 +129,7 @@ model output -> unnormalize -> restore absolute arm/EEF action
 
 `restore_action` therefore needs the absolute scattered state returned by
 `encode_payload` as `state_abs`, not the normalized model input `state`.
+Public v1 serving exercises only the joint-control branch of this inverse.
 
 ## Component and unified routes
 
@@ -170,23 +167,23 @@ Joint-only routes stop at joint mapping; do not add FK. Native EEF routes must
 declare or extract the EEF values explicitly. Every serialized `robot_name` and
 registry key is a checkpoint identifier and must remain stable.
 
-The generic unified EEF path currently assumes a dual-arm 18D EEF block.
-Single-arm joint routes may use the left arm/gripper groups, but single-arm EEF
-is not supported by the generic mask. Mixed EEF/joint presence is supported
-during training, but generic deployment restoration does not currently consume
-the per-request mask. Neither EEF case should be deployed without
-adapter-specific masking/restoration.
+The training/data pipeline's generic EEF path assumes a dual-arm 18D EEF block.
+Single-arm joint routes may use the left arm/gripper groups, but generic
+single-arm EEF masking is unsupported. Mixed EEF/joint presence is a training
+feature. Public v1 deployment is joint-control only; adding adapter-specific EEF
+masking or restoration does not make an EEF route a supported server route.
 
 ## Hardware action order
 
-Unified restoration gathers active semantic slices in this order:
+Unified data-level restoration gathers active semantic slices in this order:
 
 ```text
 left_eef, right_eef, left_gripper, right_gripper,
 waist, chassis_velocity, left_arm, right_arm
 ```
 
-That order is not necessarily the SDK order. `build_sdk_action_perm` uses the
+For public v1 joint serving, the active joint-control subset is not necessarily
+in SDK order. `build_sdk_action_perm` uses the
 registry's `action_groups` to construct and validate the permutation. A missing
 semantic group or a hole in the native vector must remain a hard error. If the
 SDK expects a wider vector containing uncontrolled columns, implement an

@@ -213,7 +213,10 @@ The checkpoint stores a Data Spec containing its `robot_name`, registry key,
 config modules, cameras, transforms, mask/assembly identifiers, and
 normalization contract. Installed adapter/registry code resolves those
 identifiers back to current code.
-Deployment reuses that spec:
+
+Inference and data-level restoration reuse that spec. The public v1 HTTP server
+supports joint-control routes only; the EEF inverse documented here is retained
+for training and local data/evaluation workflows.
 
 ```python
 from tau0_vla.data import encode_payload, load_data_spec, restore_action
@@ -242,7 +245,7 @@ unnormalize -> unrelative -> convert EEF rot6d to quat_xyzw
 ```
 
 `restore_unified_action` returns named semantic arrays.
-`restore_action` concatenates them in canonical semantic order; a deployment
-adapter must still reorder that flat result when the SDK uses a different
-native column order. [`deploy/policy.py`](../../../deploy/policy.py) is the
-reference inference wrapper.
+`restore_action` concatenates them in canonical semantic order. For a supported
+joint-control serving route, the deployment adapter must still reorder that flat
+result when the SDK uses a different native column order.
+[`deploy/policy.py`](../../../deploy/policy.py) is the reference inference wrapper.

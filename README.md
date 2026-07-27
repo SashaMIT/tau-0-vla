@@ -61,7 +61,10 @@ For another dataset or robot, start from
 
 ## Serving and evaluation
 
-Serve a post-trained checkpoint:
+Public v1 serving supports joint-control checkpoints only. Native EEF data may
+be used for training, but EEF serving is not supported in this release.
+
+Serve a post-trained joint-control checkpoint:
 
 ```bash
 python -m deploy.server --model outputs/<run_name>

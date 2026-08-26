@@ -554,7 +554,7 @@ def _maybe_wait_for_debugger() -> None:
     # code in the training process. Default to localhost so enabling the
     # debugger on a shared cluster does not expose RCE to every network peer;
     # VLA_DEBUGPY_HOST is the explicit escape hatch for remote attach.
-    host = os.environ.get("VLA_DEBUGPY_HOST", "127.0.0.1")
+    host = os.environ.get("VLA_DEBUGPY_HOST") or "127.0.0.1"
     debugpy.listen((host, port))
     print(f"[debugpy] rank {rank} listening on {host}:{port} — waiting for attach ...", flush=True)
     debugpy.wait_for_client()

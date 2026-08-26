@@ -55,17 +55,23 @@ The server exposes:
   action chunk;
 - `GET /health` — health check.
 
-Both POST request bodies are `.npz` bundles (`deploy/wire.py`): numpy arrays
-travel as named entries, all other leaves in a JSON envelope, always decoded
+Both POST request bodies are `.npz` bundles produced by
+`deploy.wire.pack_payload`: boolean, integer, and floating-point numpy arrays
+travel as named entries and the nested dictionary/list structure travels in a
+tagged JSON envelope. The server validates the archive and always decodes it
 with `allow_pickle=False`. FastAPI serializes
 responses as JSON: `/act` returns a semantic dictionary and the legacy-named
 `/act_lerobot_bytes` returns a nested numeric list, not raw bytes.
 
 The wire format never unpickles request bodies — pickled payloads are remote
-code execution for anyone who can reach the port. Bodies are also capped
-(`MAX_BODY_BYTES`) so a hostile or broken client cannot exhaust memory. The
-server binds to `127.0.0.1` by default; expose it beyond localhost only inside
-a trusted, isolated network.
+code execution for anyone who can reach the port. The server caps the request
+while streaming it and separately caps the archive's total uncompressed size,
+so compressed payloads cannot bypass `MAX_BODY_BYTES`. Existing clients must
+replace `pickle.dumps(payload)` with `pack_payload(payload)`; there is no unsafe
+pickle fallback. The server binds to `127.0.0.1` by default. The safe wire
+format does not provide authentication or encryption, so expose the server
+beyond localhost only inside a trusted, isolated network or behind an
+authenticated TLS proxy.
 
 For `/act`, send raw task text in `payload["prompt"]`; `encode_payload` applies
 the saved prompt template. Sending already-templated text wraps it twice.
